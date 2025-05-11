@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+:root {
+  --text-color: #f2f9f1;
+  --background-color: #5c715e;
+  --highlight-color: #ddeedf;
+  --alternative-background-color: #b6cdbd;
+
+  font-family:  "Delius", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  color-scheme: light dark;
+  color: var(--text-color);
+  background-color: var(--background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: var(--highlight-color);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--highlight-color);
+}
+
+body p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  margin: 0 1em;
+  border-radius: 8px;
+  border: 1px solid ;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--highlight-color);
+  color: var(--background-color);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: rgb(147, 190, 147);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:focus {
+  outline-color: #f8b400;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid transparent;
+  background-color: var( --text-color);
+  color: #879d89;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--background-color);
+    background-color: var(--text-color);
+  }
+  a:hover {
+    color: rgb(147, 190, 147);
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+
+}
