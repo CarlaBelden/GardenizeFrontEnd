@@ -1,7 +1,7 @@
 import React,{useContext,useState, useEffect} from "react";
 import { ThemeContext } from "../context/ThemeContext.js";
 import { useNavigate } from "react-router";
-
+import "./PlantList.css";
 
 const GetPlantList = ({offset, loading, setLoading}) => {
     const [plants, setPlants] = useState([]);
@@ -11,9 +11,11 @@ const GetPlantList = ({offset, loading, setLoading}) => {
     useEffect(() => {
         async function fetchPlants() {
             try {
-                const key = "sk-nUTl681d56208eb2b10323"
-                const plantURL = `https://perenual.com/api/v2/species-list?key=${key}&page=${offset}`;
+                // const key = "sk-nUTl681d56208eb2b10323"
+                // // TODO: call backend API instead
+                // const plantURL = `https://perenual.com/api/v2/species-list?key=${key}&page=${offset}`;
 
+                const plantURL = "http://localhost:8000/api/plants"
                 const response = await fetch(plantURL);
                 if(!response.ok){
                     throw new Error(`${response.status}`)
@@ -46,7 +48,6 @@ const GetPlantList = ({offset, loading, setLoading}) => {
                 {plants.map((plant) => (
                     <div key={plant.id} onClick={() => navigate(`/plant/${poke.id}`)}>
                         <div className ="card">
-                        {/* {plant.default_image && (<img src={plant.default_image.thumbnail} alt={plant.common_name} /> )} */}
                         {plant.default_image?(<img src={plant.default_image.thumbnail} alt={plant.common_name} />):(<p>No Image to display</p>)}
 
                             <h4 style={{ textTransform: 'capitalize' }}>{plant.common_name}</h4>
@@ -86,16 +87,17 @@ const handleNextClick = () => {
 
 
     return (
-    <div>
-        <h1>Cultivated Collection</h1>
+    <div className="plantlistpage-backmat">
+        <h1 className="plantlistpage-backmat-heading">Cultivated Collection</h1>
         <button onClick={handlePrevClick} disabled={loading || !hasPrev}>
         <p>Previous Page</p>
         </button>
         <button onClick={handleNextClick} disabled={loading || !hasNext}>
         <p>Next Page</p>
         </button>
-            <h2>Click on a Plant to see its details</h2>
+            <h2>Click on a Plant to see its details
         <GetPlantList offset = {offset} loading = {loading} setLoading= {setLoading}/>
+        </h2>
     </div>
 
     );
