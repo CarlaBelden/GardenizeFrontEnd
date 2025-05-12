@@ -22,7 +22,7 @@ const GetPlantList = ({offset, loading, setLoading}) => {
                 }
                 const data = await response.json();
                 // Fetching list of plants
-                const plantData = data.data;
+                const plantData = data;
 
                 setPlants(plantData); // Merging the new Pokemon with the previous list?? only if appears twice
                 setLoading(false)
@@ -46,9 +46,9 @@ const GetPlantList = ({offset, loading, setLoading}) => {
             <ul className="card-grid">
 
                 {plants.map((plant) => (
-                    <div key={plant.id} onClick={() => navigate(`/plant/${poke.id}`)}>
+                    <div key={plant.plant_id} onClick={() => navigate(`/plant/${plant.plant_id}`)}>
                         <div className ="card">
-                        {plant.default_image?(<img src={plant.default_image.thumbnail} alt={plant.common_name} />):(<p>No Image to display</p>)}
+                        {plant.default_image?(<img src={plant.default_image} alt={plant.common_name} />):(<p>No Image to display</p>)}
 
                             <h4 style={{ textTransform: 'capitalize' }}>{plant.common_name}</h4>
                         </div>

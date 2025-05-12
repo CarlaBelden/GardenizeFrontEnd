@@ -5,6 +5,7 @@
     min-height: 70vh;
     border-radius: 10px;
     padding: 2em;
+
   }
 
 
@@ -15,6 +16,7 @@
     border-radius: 10px;
     margin: 0.5em auto;
     width: 80vw;
+    max-width: 85%;
 }
 
 .page-backmat > p{
@@ -23,8 +25,8 @@
     border: 1px solid var(--background-color);
     border-radius: 10px;
     margin: 0.5em auto;
-    width: 80vw;
     min-height: 50vh;
+    max-width: 85%;
     padding-top: 3em;
     text-align: center;
 }
