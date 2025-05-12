@@ -89,12 +89,12 @@ const handleNextClick = () => {
     return (
     <div className="plantlistpage-backmat">
         <h1 className="plantlistpage-backmat-heading">Cultivated Collection</h1>
-        <button onClick={handlePrevClick} disabled={loading || !hasPrev}>
+        {/* <button onClick={handlePrevClick} disabled={loading || !hasPrev}>
         <p>Previous Page</p>
         </button>
         <button onClick={handleNextClick} disabled={loading || !hasNext}>
         <p>Next Page</p>
-        </button>
+        </button> */}
             <h2>Click on a Plant to see its details
         <GetPlantList offset = {offset} loading = {loading} setLoading= {setLoading}/>
         </h2>
