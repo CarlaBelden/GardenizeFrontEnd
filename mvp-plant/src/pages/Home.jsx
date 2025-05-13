@@ -17,7 +17,7 @@ const Home = () => {
 
         </button> */}
 
-        <p>Gardenize is a digital garden planning
+        <p className="homepage-summary">Gardenize is a digital garden planning
 tool that helps you organize your garden spaces.
 It allows you to store details of your plant projects,
 save ideas for future projects,

@@ -43,10 +43,10 @@ const Projects = () => {
       <h1 className="projectslistpage-backmat-heading">Projects List</h1>
       {projects ? (
 
-      <ul className="card-grid">
+      <ul className="projectlists-container">
 {projects.map((project) => (
     <div key={project.project_id} onClick={() => navigate(`/projects/${project.project_id}`)}>
-        <div className ="">
+        <div className ="projectlists-backmat">
         {/* {plant.default_image?(<img src={plant.default_image} alt={plant.common_name} />):(<p>No Image to display</p>)} */}
 
             <h4>{project.project_name}</h4>
