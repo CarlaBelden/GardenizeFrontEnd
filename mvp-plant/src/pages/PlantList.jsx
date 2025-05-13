@@ -24,7 +24,7 @@ const GetPlantList = ({offset, loading, setLoading}) => {
                 // Fetching list of plants
                 const plantData = data;
 
-                setPlants(plantData); // Merging the new Pokemon with the previous list?? only if appears twice
+                setPlants(plantData);
                 setLoading(false)
             }
             catch (error) {
@@ -46,7 +46,7 @@ const GetPlantList = ({offset, loading, setLoading}) => {
             <ul className="card-grid">
 
                 {plants.map((plant) => (
-                    <div key={plant.plant_id} onClick={() => navigate(`/plant/${plant.plant_id}`)}>
+                    <div key={plant.plant_id} onClick={() => navigate(`/plants/${plant.plant_id}`)}>
                         <div className ="card">
                         {plant.default_image?(<img src={plant.default_image} alt={plant.common_name} />):(<p>No Image to display</p>)}
 

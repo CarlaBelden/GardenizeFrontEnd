@@ -1,11 +1,10 @@
 import './App.css'
-import {Routes,Route} from 'react-router-dom';
+import {Routes,Route, NavLink} from 'react-router-dom';
 import Home from './pages/Home';
 import PlantDetail from './pages/PlantDetail';
 import PlantList from './pages/PlantList';
 import Project from './pages/Project';
 import Projects from './pages/Projects';
-import { NavLink } from 'react-router';
 import plant from "./assets/plant.svg";
 
 
@@ -14,7 +13,7 @@ const NavigationBar = () => {
     <nav className="navbar">
       <img src={plant} style={{width:"2em", height:"2em"}}alt="Logo" />
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/plantlist">Plant List</NavLink>
+      <NavLink to="/plants">Plant List</NavLink>
       <NavLink to="/projects">Projects</NavLink>
     </nav>
   );
@@ -29,10 +28,10 @@ function App() {
     <main>
     <Routes>
       <Route path ="/" element={<Home />} />
-      <Route path ="/plantlist" element={<PlantList />} />
-      <Route path ="/plantdetail" element={<PlantDetail />} />
-      <Route path ="/project" element={<Project />} />
+      <Route path ="/plants" element={<PlantList />} />
+      <Route path ="/plants/:plant_id" element={<PlantDetail />} />
       <Route path ="/projects" element={<Projects />} />
+      <Route path ="/projects/:project_id" element={<Project />} />
     </Routes>
     </main>
     <footer></footer>
