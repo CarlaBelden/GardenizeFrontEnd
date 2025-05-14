@@ -15,12 +15,12 @@ function DropDown() {
         }
         const data = await response.json();
 
-        const formattedOptions = data.map(item => ({
-          value: item.id, // or another unique identifier
-          label: item.name // or the display text
+        const format = data.map(item => ({
+          value: item.project_id,
+          label: item.project_name
         }));
 
-        setOptions(formattedOptions);
+        setOptions(format);
         setLoading(false);
       } catch (e) {
         setError(e);
@@ -40,7 +40,8 @@ function DropDown() {
   }
 
   return (
-    <select>
+    <select className="projects-dropdown">
+      <option value="" disabled selected hidden>Select Plant Project</option>
       {options.map(option => (
         <option key={option.value} value={option.value}>
           {option.label}

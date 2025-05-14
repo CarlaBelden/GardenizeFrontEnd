@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { useNavigate,useParams } from "react-router";
 import "./PlantDetail.css";
+import DropDown from "./DropDown";
 
 const PlantDetail = () => {
   const [plant, setPlant] = useState(null);
@@ -45,26 +46,28 @@ const PlantDetail = () => {
       <div className="plantlistpage-backmat">
 
         <h1 className="plantlistpage-backmat-heading">{plant.common_name}</h1>
-        <div className="plantlistpage-backmat-heading">
-          <div className="large_detail_card">
-        <img
-          src={plant.default_image}
-          alt={plant.common_name}
-          className="plant-image"
-        />
-        <p>Watering: {plant.watering}</p>
-        <p>Sunlight: {plant.sunlight}</p>
-        <p>Hardiness Zone: {plant.hardiness_min} - {plant.hardiness_max}</p>
-        <p>Flowers: {plant.flowers ? "Yes" : "No"}</p>
-        <p>Flowering Season: {plant.flowering_season}</p>
-        <p>Indoor Plant: {plant.indoor ? "Yes" : "No"}</p>
-        <p>Description: {plant.description}</p>
-        </div>
+        <div className="plantlistpage-backmat-heading white-mat-container">
+            <div className="large_detail_card">
+                <img
+                  src={plant.default_image}
+                  alt={plant.common_name}
+                  className="plant-image"
+                />
+                <p>Watering: {plant.watering}</p>
+                <p>Sunlight: {plant.sunlight}</p>
+                <p>Hardiness Zone: {plant.hardiness_min} - {plant.hardiness_max}</p>
+                <p>Flowers: {plant.flowers ? "Yes" : "No"}</p>
+                <p>Flowering Season: {plant.flowering_season}</p>
+                <p>Indoor Plant: {plant.indoor ? "Yes" : "No"}</p>
+                <p>Description: {plant.description}</p>
+            </div>
+        <DropDown/>
         </div>
       </div>
     ) : (
       <div>Loading Plant Details...</div>
     )}
+
   </>
   );
 };
