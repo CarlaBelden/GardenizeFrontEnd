@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function DropDown() {
+function DropDown({ selectedValue, onChange }) {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -40,8 +40,8 @@ function DropDown() {
   }
 
   return (
-    <select className="projects-dropdown">
-      <option value="" disabled selected hidden>Select Plant Project</option>
+    <select className="projects-dropdown" value={selectedValue} onChange={(e) => onChange(e.target.value)}>
+    <option value="" disabled hidden>Select Plant Project</option>
       {options.map(option => (
         <option key={option.value} value={option.value}>
           {option.label}

@@ -5,6 +5,7 @@ import DropDown from "./DropDown";
 
 const PlantDetail = () => {
   const [plant, setPlant] = useState(null);
+  const [selectedProjectId, setSelectedProjectId] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { plant_id } = useParams();
@@ -30,6 +31,57 @@ const PlantDetail = () => {
               } }
           fetchPlant()
       }, [plant_id]); // Dependency array to re-run the effect when offset changes
+
+
+
+
+
+
+
+      const handleClick = async () => {
+
+        console.log(selectedProjectId)
+        console.log(plant_id)
+        if (!selectedProjectId) {
+          alert("Please select a project first.");
+          return;
+        }
+
+        try {
+          const payload = {
+            project_id: selectedProjectId,
+            plant_id: plant_id
+          };
+
+          const response = await fetch('http://localhost:8000/api/project-plants/', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+          }
+
+          const result = await response.json();
+          alert("Plant added to project successfully!");
+          console.log(result);
+        } catch (error) {
+          console.error("Error submitting plant to project:", error);
+          alert("Failed to add plant to project.");
+        }
+      };
+
+
+
+
+
+
+
+
 
       if (error) {
           return <div>Something went wrong, try again..</div>;
@@ -61,7 +113,8 @@ const PlantDetail = () => {
                 <p>Indoor Plant: {plant.indoor ? "Yes" : "No"}</p>
                 <p>Description: {plant.description}</p>
             </div>
-        <DropDown/>
+        <DropDown selectedValue={selectedProjectId} onChange={setSelectedProjectId}/>
+        <button className="add-plant-project-button" type="button" onClick={handleClick}>Add plant to project</button>
         </div>
       </div>
     ) : (

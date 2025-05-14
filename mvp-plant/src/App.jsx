@@ -6,6 +6,8 @@ import PlantList from './pages/PlantList';
 import Project from './pages/Project';
 import Projects from './pages/Projects';
 import plant from "./assets/plant.svg";
+import React from 'react';
+
 
 
 const NavigationBar = () => {

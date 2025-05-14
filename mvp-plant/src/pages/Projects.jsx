@@ -71,9 +71,23 @@ const Projects = () => {
           setReloadTrigger(prev => prev + 1);
       }
 
+      const handleDelete = async (project_id) => {
+        console.log(project_id)
+        try {
+          const response = await fetch(`/api/projects/${project_id}`, {
+            method: 'DELETE',
+          });
 
+          if (!response.ok) {
+            throw new Error(`${response.status}`);
+          }
+          const data = await response.json();
+          alert(data.detail); //confirmation message from backend
+        } catch (error) {
+          console.error('Error occurred while deleting the project', error);
+        }
 
-
+      };
 
   return (
     <div className="projectslistpage-backmat">
@@ -87,6 +101,10 @@ const Projects = () => {
         {/* {plant.default_image?(<img src={plant.default_image} alt={plant.common_name} />):(<p>No Image to display</p>)} */}
 
             <h4>{project.project_name}</h4>
+            <button onClick={(e) => {
+              e.stopPropagation();
+              handleDelete(project.project_id);
+            }}>Delete</button>
         </div>
     </div>
 ))}

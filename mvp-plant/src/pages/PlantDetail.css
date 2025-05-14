@@ -19,10 +19,16 @@
 }
 
 .white-mat-container{
-display: flex;
+display: grid;
+grid-gap:5px;
+grid-template-areas: "a a d"
+"a a b"
+"a a .";
+
 }
 
 .large_detail_card {
+  grid-area: a;
     background: white;
     border-radius: 0.5rem;
     padding: 3rem;
@@ -39,8 +45,9 @@ display: flex;
   }
 
   .projects-dropdown{
+    grid-area: d;
     align-self: flex-start;
-    margin: 20px auto;
+    margin: 20px 30px;
     height: 3em;
     font-size: large;
     text-align: center;
@@ -49,3 +56,11 @@ display: flex;
     background-color: var(--highlight-color);
     border: 1px solid var(--background-color);
   }
+
+.add-plant-project-button{
+  grid-area: b;
+}
+select:focus {
+  outline-color: #f8b400;
+  border: none;
+}

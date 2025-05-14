@@ -10,7 +10,7 @@
   font-style: normal;
 
   color-scheme: light dark;
-  color: var(--text-color);
+  color: var(--background-color);
   background-color: var(--background-color);
 
   font-synthesis: none;
