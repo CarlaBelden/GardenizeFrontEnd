@@ -28,6 +28,8 @@
     text-align: center;
     max-width: 60%;
     margin:auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .projectlists-container{
@@ -55,4 +57,16 @@ ul{
 
 .form-textarea{
     height: 100px;
+}
+
+.project-list-delete-button{
+
+    margin:3px 3px;
+    padding: 0 4px;
+    width: 60px;
+}
+
+.project-list-item{
+margin-top: 0;
+margin-bottom: 1em;
 }

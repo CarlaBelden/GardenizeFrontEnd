@@ -44,7 +44,7 @@ const Project = () => {
 
   return (
     <div className="project-plant-backmat">
-      <h1 className="project-plant-backmat-heading">{project.project_name}</h1>
+      <h1 className="project-plant-backmat-heading" style={{ textTransform: 'capitalize' }}>{project.project_name}</h1>
       {project.summary}
 
         {projectPlants ? (

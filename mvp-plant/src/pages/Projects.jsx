@@ -74,7 +74,7 @@ const Projects = () => {
       const handleDelete = async (project_id) => {
         console.log(project_id)
         try {
-          const response = await fetch(`/api/projects/${project_id}`, {
+          const response = await fetch(`http://localhost:8000/api/projects/${project_id}`, {
             method: 'DELETE',
           });
 
@@ -83,6 +83,7 @@ const Projects = () => {
           }
           const data = await response.json();
           alert(data.detail); //confirmation message from backend
+          setReloadTrigger(prev => prev + 1);
         } catch (error) {
           console.error('Error occurred while deleting the project', error);
         }
@@ -99,12 +100,12 @@ const Projects = () => {
     <div key={project.project_id} onClick={() => navigate(`/projects/${project.project_id}`)}>
         <div className ="projectlists-backmat">
         {/* {plant.default_image?(<img src={plant.default_image} alt={plant.common_name} />):(<p>No Image to display</p>)} */}
-
-            <h4>{project.project_name}</h4>
-            <button onClick={(e) => {
+        <button onClick={(e) => {
               e.stopPropagation();
               handleDelete(project.project_id);
-            }}>Delete</button>
+            }} className="project-list-delete-button">Delete</button>
+            <h4 style={{ textTransform: 'capitalize' }} className="project-list-item">{project.project_name}</h4>
+
         </div>
     </div>
 ))}

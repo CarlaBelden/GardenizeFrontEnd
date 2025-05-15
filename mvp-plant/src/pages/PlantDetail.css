@@ -55,6 +55,7 @@ grid-template-areas: "a a d"
     color: var(--background-color);
     background-color: var(--highlight-color);
     border: 1px solid var(--background-color);
+    text-transform: capitalize;
   }
 
 .add-plant-project-button{

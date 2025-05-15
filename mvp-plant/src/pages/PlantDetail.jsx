@@ -111,7 +111,7 @@ const PlantDetail = () => {
                 <p>Flowers: {plant.flowers ? "Yes" : "No"}</p>
                 <p>Flowering Season: {plant.flowering_season}</p>
                 <p>Indoor Plant: {plant.indoor ? "Yes" : "No"}</p>
-                <p>Description: {plant.description}</p>
+                <p>{plant.description}</p>
             </div>
         <DropDown selectedValue={selectedProjectId} onChange={setSelectedProjectId}/>
         <button className="add-plant-project-button" type="button" onClick={handleClick}>Add plant to project</button>
