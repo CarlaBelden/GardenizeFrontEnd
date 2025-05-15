@@ -18,6 +18,15 @@
     max-width: 85%;
 }
 
+.plantlistpage-backmat-content{
+    color: var(--background-color);
+    background-color: var(--text-color);
+    border: 1px solid var(--background-color);
+    border-radius: 10px;
+    margin: 0.5em auto;
+    max-width: 85%;
+}
+
 .white-mat-container{
 display: grid;
 grid-gap:5px;
@@ -41,6 +50,11 @@ grid-template-areas: "a a d"
     & p{
         font-size: 1rem;
         margin: 20px 20px;
+    }
+    & img{
+        border-radius: 10px;
+        margin-bottom: 2em;
+        filter: drop-shadow(5px 5px 10px #5c715e);
     }
   }
 

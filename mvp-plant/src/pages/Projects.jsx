@@ -97,8 +97,8 @@ const Projects = () => {
 
       <ul className="projectlists-container">
 {projects.map((project) => (
-    <div key={project.project_id} onClick={() => navigate(`/projects/${project.project_id}`)}>
-        <div className ="projectlists-backmat">
+    <div className ="projectlists-backmat" key={project.project_id} onClick={() => navigate(`/projects/${project.project_id}`)}>
+
         {/* {plant.default_image?(<img src={plant.default_image} alt={plant.common_name} />):(<p>No Image to display</p>)} */}
         <button onClick={(e) => {
               e.stopPropagation();
@@ -106,7 +106,7 @@ const Projects = () => {
             }} className="project-list-delete-button">Delete</button>
             <h4 style={{ textTransform: 'capitalize' }} className="project-list-item">{project.project_name}</h4>
 
-        </div>
+
     </div>
 ))}
 </ul>
@@ -121,15 +121,12 @@ const Projects = () => {
   <Modal onClose={() => setShowForm(!showForm)}>
         <form className="project-plant-create-form" onSubmit={submitForm}>
           {/* Form elements go here */}
-          <label>
-            Project Name:
+          <label for="project_name">Project Name:</label>
+              <input className="form-spaceneeded" type="text" name="project_name" placeholder="Indoor Collection" required={true} />
 
-            <input className="form-spaceneeded" type="text" name="project_name" placeholder="Indoor Collection" required={true} />
-          </label>
-          <label >
-            Describe the Project:
+          <label for="summary"> Describe the Project: </label>
             <textarea className="form-textarea" type="text"  name="summary" placeholder="Curated assortment of potted plants, including herbs, fruits, and vegetables, grown within a home or office for aesthetic or practical purposes. " required={true} />
-          </label>
+
           <button type="submit" >Submit</button>
 
         </form>

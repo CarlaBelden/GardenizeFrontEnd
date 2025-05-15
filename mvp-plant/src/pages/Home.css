@@ -17,6 +17,7 @@
     margin: 0.5em auto;
     width: 80vw;
     max-width: 85%;
+    filter: drop-shadow(5px 5px 10px #5c715e);
 }
 
 .page-backmat > p{

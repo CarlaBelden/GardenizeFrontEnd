@@ -16,6 +16,7 @@
     border-radius: 10px;
     margin: 0.5em auto;
     max-width: 85%;
+    filter: drop-shadow(5px 5px 10px #5c715e);
 }
 
 .plantlistpage-backmat > h2{

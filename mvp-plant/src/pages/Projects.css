@@ -16,6 +16,7 @@
     border-radius: 10px;
     margin: 0.5em auto;
     max-width: 85%;
+    filter: drop-shadow(5px 5px 10px #5c715e);
 }
 
 .projectlists-backmat{
@@ -26,10 +27,11 @@
     /* margin: 0.5em auto; */
     /* padding-top: 3em; */
     text-align: center;
-    max-width: 60%;
     margin:auto;
     display: flex;
     flex-direction: column;
+    max-width: 60% ;
+    min-width: 40%;
 }
 
 .projectlists-container{
@@ -44,16 +46,14 @@ ul{
     padding:0;
 }
 
-.project-plant-create-form>label{
+.project-plant-create-form{
     display: flex;
     flex-direction: column;
     gap: 20px;
     justify-content: center;
 }
 
-.form-spaceneeded{
-    margin-bottom: 20px;
-}
+
 
 .form-textarea{
     height: 100px;
@@ -68,5 +68,6 @@ ul{
 
 .project-list-item{
 margin-top: 0;
-margin-bottom: 1em;
+margin-bottom: 1.5em;
+
 }

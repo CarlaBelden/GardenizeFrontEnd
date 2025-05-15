@@ -98,7 +98,7 @@ const PlantDetail = () => {
       <div className="plantlistpage-backmat">
 
         <h1 className="plantlistpage-backmat-heading">{plant.common_name}</h1>
-        <div className="plantlistpage-backmat-heading white-mat-container">
+        <div className="plantlistpage-backmat-content white-mat-container">
             <div className="large_detail_card">
                 <img
                   src={plant.default_image}
