@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import { useNavigate,useParams } from "react-router";
 import "./PlantDetail.css";
 import DropDown from "./DropDown";
+import NewProjectButton from "./NewProjectIdea";
 
 const PlantDetail = () => {
   const [plant, setPlant] = useState(null);
@@ -9,6 +10,7 @@ const PlantDetail = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { plant_id } = useParams();
+  const [reloadTrigger, setReloadTrigger] = useState(0);
 
   useEffect(() => {
           async function fetchPlant() {
@@ -99,22 +101,27 @@ const PlantDetail = () => {
 
         <h1 className="plantlistpage-backmat-heading">{plant.common_name}</h1>
         <div className="plantlistpage-backmat-content white-mat-container">
+        <NewProjectButton setReloadTrigger={setReloadTrigger} />
+        <DropDown selectedValue={selectedProjectId} onChange={setSelectedProjectId} reloadTrigger={reloadTrigger}/>
+        <button className="add-plant-project-button" type="button" onClick={handleClick}>Add plant to project</button>
+
             <div className="large_detail_card">
                 <img
                   src={plant.default_image}
                   alt={plant.common_name}
                   className="plant-image"
                 />
-                <p>Watering: {plant.watering}</p>
-                <p>Sunlight: {plant.sunlight}</p>
-                <p>Hardiness Zone: {plant.hardiness_min} - {plant.hardiness_max}</p>
-                <p>Flowers: {plant.flowers ? "Yes" : "No"}</p>
-                <p>Flowering Season: {plant.flowering_season}</p>
-                <p>Indoor Plant: {plant.indoor ? "Yes" : "No"}</p>
-                <p>{plant.description}</p>
+                <div className="plant-info">
+                <p >Watering: {plant.watering}</p>
+                <p >Sunlight: {plant.sunlight}</p>
+                <p >Hardiness Zone: {plant.hardiness_min} - {plant.hardiness_max}</p>
+                <p >Flowers: {plant.flowers ? "Yes" : "No"}</p>
+                <p >Flowering Season: {plant.flowering_season}</p>
+                <p >Indoor Plant: {plant.indoor ? "Yes" : "No"}</p>
+                </div>
+                <p id="plant-description">{plant.description}</p>
             </div>
-        <DropDown selectedValue={selectedProjectId} onChange={setSelectedProjectId}/>
-        <button className="add-plant-project-button" type="button" onClick={handleClick}>Add plant to project</button>
+
         </div>
       </div>
     ) : (

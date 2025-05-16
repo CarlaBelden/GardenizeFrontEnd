@@ -28,16 +28,20 @@
 }
 
 .white-mat-container{
-display: grid;
+/* display: grid;
 grid-gap:5px;
-grid-template-areas: "a a d"
-"a a b"
-"a a .";
+grid-template-areas: "a a a"
+"a a a"
+"a d ."
+". b ."; */
 
 }
 
 .large_detail_card {
-  grid-area: a;
+    display: grid;
+    grid-gap:5px;
+    grid-template-areas: "a a c"
+    "b b c";
     background: white;
     border-radius: 0.5rem;
     padding: 3rem;
@@ -57,9 +61,11 @@ grid-template-areas: "a a d"
         filter: drop-shadow(5px 5px 10px #5c715e);
     }
   }
+  .plant-info{
+    grid-area: b;
+  }
 
   .projects-dropdown{
-    grid-area: d;
     align-self: flex-start;
     margin: 20px 30px;
     height: 3em;
@@ -73,7 +79,19 @@ grid-template-areas: "a a d"
   }
 
 .add-plant-project-button{
-  grid-area: b;
+
+}
+
+.plant-image{
+  grid-area: a;
+}
+#plant-description{
+  grid-area: c;
+  margin: 0 40px;
+  font-size: large;
+  line-height: 1.4em;
+  text-indent: 2em;
+  text-align: justify;
 }
 select:focus {
   outline-color: #f8b400;

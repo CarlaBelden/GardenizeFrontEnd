@@ -5,6 +5,9 @@
     min-height: 70vh;
     border-radius: 10px;
     padding: 2em;
+    margin-top: 20px;
+    background: #B6CDBD;
+    background: linear-gradient(2deg, rgba(182, 205, 189, 1) 0%, rgba(182, 205, 189, 1) 42%, rgba(221, 238, 223, 1) 100%);
 
   }
 

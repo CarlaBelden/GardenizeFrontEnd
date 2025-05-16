@@ -95,7 +95,7 @@ const handleNextClick = () => {
         <button onClick={handleNextClick} disabled={loading || !hasNext}>
         <p>Next Page</p>
         </button> */}
-            <h2>Click on a Plant to see its details
+            <h2>Click a Plant To See It's Details
         <GetPlantList offset = {offset} loading = {loading} setLoading= {setLoading}/>
         </h2>
     </div>

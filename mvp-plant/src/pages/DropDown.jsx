@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function DropDown({ selectedValue, onChange }) {
+function DropDown({ selectedValue, onChange, reloadTrigger }) {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,7 +29,7 @@ function DropDown({ selectedValue, onChange }) {
     };
 
     fetchData();
-  }, []);
+  }, [reloadTrigger]); // Dependency array to re-run the effect when new project added
 
   if (loading) {
     return <p>Loading data...</p>;
