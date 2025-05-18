@@ -1,5 +1,4 @@
-import React,{useContext,useState, useEffect} from "react";
-import { ThemeContext } from "../context/ThemeContext.js";
+import React,{useState, useEffect} from "react";
 import { useNavigate } from "react-router";
 import "./PlantList.css";
 

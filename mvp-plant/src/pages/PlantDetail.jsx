@@ -42,8 +42,7 @@ const PlantDetail = () => {
 
       const handleClick = async () => {
 
-        console.log(selectedProjectId)
-        console.log(plant_id)
+
         if (!selectedProjectId) {
           alert("Please select a project first.");
           return;
@@ -73,7 +72,7 @@ const PlantDetail = () => {
           console.log(result);
         } catch (error) {
           console.error("Error submitting plant to project:", error);
-          alert("Failed to add plant to project.");
+          alert("Plant not added to project, please try again.");
         }
       };
 

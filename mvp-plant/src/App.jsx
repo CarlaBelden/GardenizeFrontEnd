@@ -5,6 +5,7 @@ import PlantDetail from './pages/PlantDetail';
 import PlantList from './pages/PlantList';
 import Project from './pages/Project';
 import Projects from './pages/Projects';
+import Comments from './pages/Comments';
 import plant from "./assets/plant.svg";
 import React from 'react';
 
@@ -33,6 +34,7 @@ function App() {
       <Route path ="/plants" element={<PlantList />} />
       <Route path ="/plants/:plant_id" element={<PlantDetail />} />
       <Route path ="/projects" element={<Projects />} />
+      <Route path ="/projects/:project_id/comments" element={<Comments />} />
       <Route path ="/projects/:project_id" element={<Project />} />
     </Routes>
     </main>

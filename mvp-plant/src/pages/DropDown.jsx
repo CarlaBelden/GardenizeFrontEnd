@@ -8,7 +8,7 @@ function DropDown({ selectedValue, onChange, reloadTrigger }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const projectURL = `http://localhost:8000/api/projects/`
+        const projectURL = `http://localhost:8000/api/projects`
         const response = await fetch(projectURL);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

@@ -84,3 +84,11 @@ background: linear-gradient(2deg, rgba(182, 205, 189, 1) 0%, rgba(182, 205, 189,
     gap: 1rem;
     padding: 1rem;
   }
+
+  .project-list-comment-button{margin-top:2em;
+
+  }
+/* .project-plant-comment-container{
+  display:grid;
+grid-template-columns: 1fr 1fr ;
+} */

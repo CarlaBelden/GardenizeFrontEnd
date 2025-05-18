@@ -2,6 +2,8 @@ import React,{useContext,useState, useEffect} from "react";
 import { useNavigate,useParams } from "react-router";
 import "./Project.css";
 import Modal from "../components/Modal"
+import Comments from "./Comments";
+import NewCommentButton from "./NewComment";
 
 const Project = () => {
   const [projectPlants, setProjectPlants] = useState([]);
@@ -9,6 +11,7 @@ const Project = () => {
   const [error, setError] = useState(null);
   const [project, setProject] = useState("");
   const [selectedPlant, setSelectedPlant] = useState(null);
+  const [reloadTrigger, setReloadTrigger] = useState(0);
   const navigate = useNavigate();
   const { project_id } = useParams();
 
@@ -33,7 +36,7 @@ const Project = () => {
                       console.error("Error fetching PlantData:", error);
                   } }
               fetchProject()
-          }, []); // Dependency array to re-run the effect
+          }, [reloadTrigger]); // Dependency array to re-run the effect
 
           if (error) {
               return <div>Something went wrong, try again..</div>;
@@ -42,20 +45,48 @@ const Project = () => {
               return <div>Loading Plants for your Project ...</div>;
           }
 
+          const handleDelete = async (project_id,plant_id) => {
+            try {
+              const response = await fetch(`http://localhost:8000/api/projects/${project_id}/${plant_id}`, {
+                method: 'DELETE',
+              });
+
+              if (!response.ok) {
+                throw new Error(`${response.status}`);
+              }
+              const data = await response.json();
+              alert(data.detail); //confirmation message from backend
+              setReloadTrigger(prev => prev + 1);
+            } catch (error) {
+              console.error('Error occurred while deleting the project', error);
+            }
+
+          };
+
   return (
     <div className="project-plant-backmat">
       <h1 className="project-plant-backmat-heading" style={{ textTransform: 'capitalize' }}>{project.project_name}</h1>
-      {project.summary}
+      <p>{project.summary}</p>
 
+{/* show again when comments are ready  */}
+      {/* <button onClick={() => navigate(`/projects/${project.project_id}/comments`)}className="project-list-comment-button">Add new thought or idea</button> */}
+{/* <NewCommentButton setReloadTrigger={setReloadTrigger} project_id={project_id} /> */}
+
+<div className="project-plant-comment-container">
         {projectPlants ? (
 
 <ul className="project-plant-container">
-{projectPlants.map((project) => (
-<div className ="card" key={project.plant_id} onClick={() => setSelectedPlant(project)}>
-  {project.default_image?(<img src={project.default_image} alt={project.common_name} />):(<p>No Image to display</p>)}
-      <h4>{project.common_name}</h4>
+{projectPlants.map((plant) => (
+<div className ="card" key={plant.plant_id} onClick={() => setSelectedPlant(plant)}>
+  {plant.default_image?(<img src={plant.default_image} alt={plant.common_name} /> ):(<p>No Image to display</p>)}
+      <h4>{plant.common_name}</h4>
+      <button onClick={(e) => {
+              e.stopPropagation();
+              handleDelete(project.project_id,plant.plant_id);
+            }} className="project-list-delete-button">Delete</button>
 </div>
 ))}
+
 </ul>
 ) : (
 <div>Loading Plant Details...</div>
@@ -77,13 +108,17 @@ const Project = () => {
         )}
 
 
+<Comments reloadTrigger={reloadTrigger} project_id={project_id}/>
+
+
+</div>
 </div>
 
 
 
 
 
-    // </div>
+
   );
 };
 

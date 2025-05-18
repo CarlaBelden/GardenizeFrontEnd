@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import { useNavigate } from "react-router";
 import "./Projects.css"
 import NewProjectButton from "./NewProjectIdea";
+import DeleteButton from "./DeleteButton";
 
 
 const Projects = () => {
@@ -15,7 +16,7 @@ const Projects = () => {
   useEffect(() => {
             async function fetchProjects() {
                 try {
-                    const projectURL = `http://localhost:8000/api/projects/`
+                    const projectURL = `http://localhost:8000/api/projects`
                     const response = await fetch(projectURL);
                     if(!response.ok){
                         throw new Error(`${response.status}`)
@@ -44,24 +45,7 @@ const Projects = () => {
 
         //took out the function to create new project and put it in the api.js file
 
-      const handleDelete = async (project_id) => {
-        console.log(project_id)
-        try {
-          const response = await fetch(`http://localhost:8000/api/projects/${project_id}`, {
-            method: 'DELETE',
-          });
 
-          if (!response.ok) {
-            throw new Error(`${response.status}`);
-          }
-          const data = await response.json();
-          alert(data.detail); //confirmation message from backend
-          setReloadTrigger(prev => prev + 1);
-        } catch (error) {
-          console.error('Error occurred while deleting the project', error);
-        }
-
-      };
 
   return (
     <div className="projectslistpage-backmat">
@@ -73,10 +57,7 @@ const Projects = () => {
     <div className ="projectlists-backmat" key={project.project_id} onClick={() => navigate(`/projects/${project.project_id}`)}>
 
         {/* {plant.default_image?(<img src={plant.default_image} alt={plant.common_name} />):(<p>No Image to display</p>)} */}
-        <button onClick={(e) => {
-              e.stopPropagation();
-              handleDelete(project.project_id);
-            }} className="project-list-delete-button">Delete</button>
+<DeleteButton setReloadTrigger={setReloadTrigger} project_id={project.project_id} />
             <h4 style={{ textTransform: 'capitalize' }} className="project-list-item">{project.project_name}</h4>
 
 
